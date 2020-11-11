@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Time Watch</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nguyễn Văn Vận" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+<link th:href="@{font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link th:href="@{css/stylesheet.css}" rel="stylesheet">
+<link th:href="@{css/responsive.css}" rel="stylesheet">
+<link th:href="@{owl-carousel/owl.carousel.css}" type="text/css" rel="stylesheet" media="screen" />
+<link th:href="@{owl-carousel/owl.transitions.css}" type="text/css" rel="stylesheet" media="screen" />
+<style>
+#gmap_canvas img{max-width:none!important;background:none!important}
+</style>
+
+</head>
+<body class="contact col-2 left-col">
+<div th:replace="include/layout :: pre-loader-link"></div>
+<header th:replace="include/layout :: header-link"></header>
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a th:href="@{/}"><i class="fa fa-home"></i></a></li>
+    <li><a th:href="@{contact}">Contact Us</a></li>
+  </ul>
+  <div class="row">
+    <div id="column-left" class="col-sm-3 hidden-xs column-left">
+      <div th:replace="include/layout :: banner-link"></div>
+    </div>
+    <div class="col-sm-9" id="content">
+      <h1>Contact Us</h1>
+      <h3>Our Location</h3>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4 left">
+              <address>
+              <strong> Store Name: </strong>Van Van Time Watch Store<br>
+              <br>
+              <strong>Address:</strong>
+              <div class="address"> Warehouse & Offices<br>128A Ho Tung Mau<br>Mai Dich, Cau Giay<br>Hanoi</div>
+              <br>
+              <strong>Country:</strong> VN <br>
+              <br>
+              <strong>Phone: </strong>+84 972 389 367
+              </address>
+            </div>
+            <div class="col-sm-8 rigt">
+              <div class="map">
+                <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                <div style="overflow:hidden;height:200px;width:100%;">
+                  <div id="gmap_canvas" style="height:200px;width:600px;"></div>
+                  <a class="google-map-code" href="http://www.pureblack.de/google-maps/" id="get-map-data">pureblack.de</a>
+                </div>
+                <script type="text/javascript">
+                  function init_map() {
+                    var myOptions = {
+                      zoom: 14,
+                      scrollwheel: false,
+                      center: new google.maps.LatLng(36.778261, -119.41793239999998),
+                      mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+                    marker = new google.maps.Marker({
+                      map: map,
+                      position: new google.maps.LatLng(36.778261, -119.41793239999998)
+                    });
+                    infowindow = new google.maps.InfoWindow({
+                      content: "<b>Fresh Food privated limited</b><br/>Warehouse &amp; Offices 12345<br/> California "
+                    });
+                    google.maps.event.addListener(marker, "click", function () {
+                      infowindow.open(map, marker);
+                    });
+                    infowindow.open(map, marker);
+                  } google.maps.event.addDomListener(window, 'load', init_map);
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+        <fieldset>
+          <h3>Contact Form</h3>
+          <div class="form-group required">
+            <label for="input-name" class="col-sm-2 control-label">Your Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="input-name" value="" name="name">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label for="input-email" class="col-sm-2 control-label">E-Mail Address</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="input-email" value="" name="email">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label for="input-enquiry" class="col-sm-2 control-label">Enquiry</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="input-enquiry" rows="10" name="enquiry"></textarea>
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <div class="pull-right">
+            <input type="submit" value="Submit" class="btn btn-primary">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<footer th:replace="include/layout :: footer-link"></footer>
+<div th:replace="include/layout :: footer-bottom-link"></div>
+<!-- Script -->
+<div th:replace="include/layout :: script-link"></div>
+</body>
+</html>
