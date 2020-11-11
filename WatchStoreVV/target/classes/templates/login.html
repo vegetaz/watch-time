@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Time Watch</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nguyễn Văn Vận" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+<link th:href="@{font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link th:href="@{css/stylesheet.css}" rel="stylesheet">
+<link th:href="@{css/responsive.css}" rel="stylesheet">
+<link th:href="@{owl-carousel/owl.carousel.css}" type="text/css" rel="stylesheet" media="screen" />
+<link th:href="@{owl-carousel/owl.transitions.css}" type="text/css" rel="stylesheet" media="screen" />
+</head>
+<body class="account-login col-2">
+<div class="preloader loader" style="display: block; background:#f2f2f2;"> <img src="image/loader.gif"  alt="#"/></div>
+<header th:replace="include/layout :: header-link"></header>
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a th:href="@{/}"><i class="fa fa-home"></i></a></li>
+    <li><a href="#">Account</a></li>
+    <li><a href="login.html">Login</a></li>
+  </ul>
+  <div class="row">
+    <div class="col-sm-3 hidden-xs column-left" id="column-left">
+      <div class="column-block">
+        <div class="columnblock-title">Account</div>
+        <div class="account-block">
+          <div class="list-group">
+            <a class="list-group-item">Login</a>
+            <a class="list-group-item" th:href="@{register}">Register</a>
+            <a class="list-group-item" th:href="@{forgetpassword}">Forgotten Password</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9" id="content">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="well">
+            <h2>New Customer</h2>
+            <p><strong>Register Account</strong></p>
+            <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+            <a class="btn btn-primary" th:href="@{register}">Continue</a></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+            <h2>Returning Customer</h2>
+            <strong>Returning Customer Login</strong>
+            <form enctype="multipart/form-data" method="post" action="#">
+              <div class="form-group required">
+                <label for="input-email" class="control-label">E-Mail Address</label>
+                <input type="text" class="form-control" id="input-email" placeholder="E-Mail Address" value="" name="email" required>
+              </div>
+              <div class="form-group required">
+                <label for="input-password" class="control-label">Password</label>
+                <input type="password" class="form-control" id="input-password" placeholder="Password" value="" name="password" required>
+                <a th:href="@{forgetpassword}">Forgotten Password</a></div>
+              <input type="submit" class="btn btn-primary" value="Login">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer th:replace="include/layout :: footer-link"></footer>
+<div th:replace="include/layout :: footer-bottom-link"></div>
+<!-- Script -->
+<script th:src="@{javascript/jquery-2.1.1.min.js}" type="text/javascript"></script>
+<script th:src="@{bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+<script type="text/javascript" th:src="@{javascript/jstree.min.js}"></script>
+<script type="text/javascript" th:src="@{javascript/template.js}"></script>
+<script th:src="@{javascript/common.js}" type="text/javascript"></script>
+<script th:src="@{javascript/global.js}" type="text/javascript"></script>
+<script th:src="@{owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+</body>
+</html>

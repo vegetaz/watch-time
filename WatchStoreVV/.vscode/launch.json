@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-WatchStoreVVApplication<vv>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.watchstore.vv.WatchStoreVVApplication",
+            "projectName": "vv",
+            "args": ""
+        }
+    ]
+}

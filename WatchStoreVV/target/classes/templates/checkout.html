@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Time Watch</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nguyễn Văn Vận" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+<link th:href="@{font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link th:href="@{css/stylesheet.css}" rel="stylesheet">
+<link th:href="@{css/responsive.css}" rel="stylesheet">
+<link th:href="@{owl-carousel/owl.carousel.css}" type="text/css" rel="stylesheet" media="screen" />
+<link th:href="@{owl-carousel/owl.transitions.css}" type="text/css" rel="stylesheet" media="screen" />
+<script th:src="@{javascript/jquery-2.1.1.min.js}" type="text/javascript"></script>
+</head>
+<body class="checkout col-2 left-col">
+<div class="preloader loader" style="display: block; background:#f2f2f2;"> <img src="image/loader.gif"  alt="#"/></div>
+<header th:replace="include/layout :: header-link"></header>
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a th:href="@{/}"><i class="fa fa-home"></i></a></li>
+    <li><a th:href="@{cart}">Shopping Cart</a></li>
+    <li><a>Checkout</a></li>
+  </ul>
+  <div class="row">
+    <div id="column-left" class="col-sm-3 hidden-xs column-left">
+      <div th:replace="include/layout :: banner-link"></div>
+    </div>
+    <div class="col-sm-9" id="content">
+      <h1>Checkout</h1>
+      <div id="accordion" class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapse-shipping-address" aria-expanded="false">Step 1: Delivery Address <i class="fa fa-caret-down"></i></a>
+            </h4>
+          </div>
+          <div id="collapse-shipping-address" role="heading" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+            <div class="panel-body">
+              <form class="form-horizontal">
+                <div class="radio">
+                  <label>
+                    <input type="radio" checked="checked" value="existing" name="shipping_address">
+                    I want to use an existing address</label>
+                </div>
+                <div id="shipping-existing" >
+                  <select class="form-control" name="address_id">
+                    <option selected="selected" value="4"></option>
+                  </select>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" value="new" name="shipping_address">
+                    I want to use a new address</label>
+                </div>
+                <br>
+                <div id="shipping-new" style="display: none;">
+                  <div class="form-group required">
+                    <label for="input-shipping-firstname" class="col-sm-2 control-label">First Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="input-shipping-firstname" placeholder="First Name" value="" name="firstname" required>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label for="input-shipping-lastname" class="col-sm-2 control-label">Last Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="input-shipping-lastname" placeholder="Last Name" value="" name="lastname" required>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label for="input-shipping-telephone" class="col-sm-2 control-label">Telephone</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="input-shipping-telephone" placeholder="Telephone" value="" name="telephone" required>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label for="input-shipping-address" class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="input-shipping-address" placeholder="Address" value="" name="address" required>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label for="input-shipping-city" class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="input-shipping-city" placeholder="City" value="" name="city" required>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label for="input-shipping-postcode" class="col-sm-2 control-label">Post Code</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="input-shipping-postcode" placeholder="Post Code" value="100000" name="postcode" required>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label for="input-shipping-country" class="col-sm-2 control-label">Country</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" id="input-shipping-country" name="country_id">
+                        <option value=""> --- Please Select --- </option>
+                        <option value="230" selected="selected">Viet Nam</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <script type="text/javascript">
+                $('input[name="shipping_address"]').on('change', function() {
+                    if (this.value == 'new') {
+                        $('#shipping-existing').hide();
+                        $('#shipping-new').show();
+                    } else {
+                        $('#shipping-existing').show();
+                        $('#shipping-new').hide();
+                    }
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapse-payment-method" aria-expanded="false">Step 2: Payment Method <i class="fa fa-caret-down"></i></a>
+            </h4>
+          </div>
+          <div id="collapse-payment-method" role="heading" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+            <div class="panel-body">
+              <p>Please select the preferred payment method to use on this order.</p>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="checked" value="cod" name="payment_method">
+                  Cash On Delivery </label>
+              </div>
+              <p><strong>Add Comments About Your Order</strong></p>
+              <p>
+                <textarea class="form-control" rows="2.5" name="comment"></textarea>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapse-checkout-confirm" aria-expanded="true">Step 3: Confirm Order <i class="fa fa-caret-down"></i></a>
+            </h4>
+          </div>
+          <div id="collapse-checkout-confirm" role="heading" class="panel-collapse collapse in" aria-expanded="true" style="">
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">Product Name</td>
+                      <td class="text-left">Model</td>
+                      <td class="text-right">Unit Price</td>
+                      <td class="text-right">Quantity</td>
+                      <td class="text-right">Total</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">Sony VAIO</td>
+                      <td class="text-left">Product 19</td>
+                      <td class="text-right">1</td>
+                      <td class="text-right">$1,000.00</td>
+                      <td class="text-right">$1,000.00</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="text-right" colspan="4"><strong>Sub-Total:</strong></td>
+                      <td class="text-right">$1,000.00</td>
+                    </tr>
+                    <tr>
+                      <td class="text-right" colspan="4"><strong>Flat Shipping Rate:</strong></td>
+                      <td class="text-right">$5.00</td>
+                    </tr>
+                    <tr>
+                      <td class="text-right" colspan="4"><strong>Total:</strong></td>
+                      <td class="text-right">$1,005.00</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="buttons">
+                <div class="pull-right">
+                  <input type="button" data-loading-text="Loading..." class="btn btn-primary" id="button-confirm" value="Confirm Order">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer th:replace="include/layout :: footer-link"></footer>
+<div th:replace="include/layout :: footer-bottom-link"></div>
+<!-- Script -->
+<script th:src="@{javascript/jquery-2.1.1.min.js}" type="text/javascript"></script>
+<script th:src="@{bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+<script type="text/javascript" th:src="@{javascript/jstree.min.js}"></script>
+<script type="text/javascript" th:src="@{javascript/template.js}"></script>
+<script th:src="@{javascript/common.js}" type="text/javascript"></script>
+<script th:src="@{javascript/global.js}" type="text/javascript"></script>
+<script th:src="@{owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+</body>
+</html>
